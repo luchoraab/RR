@@ -1,16 +1,17 @@
-const CACHE_NAME = "rr-v2"; // bump to force clients to fetch new files
+
+const CACHE_NAME = "rr-v3";
 const ASSETS = [
   "/", "/index.html",
   "/cadeteria.html", "/transporte.html",
   "/style.css", "/rr-overrides.css",
   "/cadeteria.js", "/transporte.js",
-  "/logo.png", "/manifest.webmanifest"
+  "/logo.png", "/manifest.webmanifest",
+  "/whatsapp.svg"
 ];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)));
 });
-
 self.addEventListener("activate", (e) => {
   e.waitUntil(
     caches.keys().then(keys =>
@@ -18,11 +19,9 @@ self.addEventListener("activate", (e) => {
     )
   );
 });
-
 self.addEventListener("fetch", (e) => {
   const req = e.request;
   const isHTML = req.headers.get("accept")?.includes("text/html");
-
   if (isHTML) {
     e.respondWith(
       fetch(req).then(res => {

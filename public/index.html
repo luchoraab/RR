@@ -15,7 +15,7 @@
         <img src="/logo.png" alt="RR" class="brand__logo" />
       </a>
       <div class="brand__text">
-        <h1>RR</h1>
+        <h1>RR Servicios Integrales</h1>
         <p>Privado, seguro y de confianza</p>
       </div>
     </div>
@@ -39,15 +39,13 @@
     </footer>
   </main>
 
-  <script>
-    // Registrar Service Worker
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("/sw.js");
-      });
-    }
+  <!-- Floating WhatsApp -->
+  <a class="wa-fab" href="https://wa.me/3517059319?text=Hola%20te%20escribo%20para%20solicitar%20un%20servicio%20de%20RR%20Servicios%20Integrales" target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
+    <img src="/whatsapp.svg" alt="WhatsApp" />
+  </a>
 
-    // Lógica del botón "Instalar"
+  <script>
+    if ("serviceWorker" in navigator) { window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js")); }
     let deferredPrompt;
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
@@ -55,7 +53,6 @@
       const btn = document.getElementById('installBtn');
       if (btn) btn.style.display = 'inline-block';
     });
-
     async function installPWA() {
       if (!deferredPrompt) return;
       deferredPrompt.prompt();
