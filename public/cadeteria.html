@@ -23,47 +23,41 @@
     <div class="brand__bar brand__bar--bottom"></div>
   </header>
 
-  <main class="container">
-    <section class="card form-card">
-      <h2>Solicitar envío (Cadetería)</h2>
-      <p class="muted">Completá el formulario y te confirmamos por WhatsApp.</p>
+<main class="container">
+  <section class="card form-card">
+    <h2>Solicitar envío (Cadetería)</h2>
+    <p class="muted">Completá el formulario y te confirmamos por WhatsApp.</p>
 
-      <form id="comandaForm" class="grid">
-        <label>Nombre y apellido
-          <input name="nombre" required placeholder="Juan Pérez" />
-        </label>
-        <label>Teléfono (WhatsApp)
-          <input name="telefono" required inputmode="tel" placeholder="351 7xx xxxx" />
-        </label>
-        <label class="col-span-2">Dirección de retiro/entrega (indicar ambas si aplica)
-          <textarea name="direccion" required placeholder="Ej: Retiro: San Martín 123 — Entrega: Colón 456"></textarea>
-        </label>
-        <label>Fecha y hora de entrega
-          <input type="datetime-local" name="fechaHora" required />
-        </label>
-        <label>Vehículo
-          <select name="vehiculo" required>
-            <option value="">Elegí una opción…</option>
-            <option value="auto">Auto</option>
-            <option value="moto">Moto</option>
-          </select>
-        </label>
-        <label class="col-span-2">Indicaciones para el cadete (opcional)
-          <textarea name="indicaciones" placeholder="Ej: Timbre 3C, dejar en portería, llamar al llegar…"></textarea>
-        </label>
-        <button type="submit" class="btn-primary col-span-2">Enviar comanda</button>
-        <p id="status" class="status" aria-live="polite"></p>
-      </form>
-    </section>
-    <footer><small>© RR — <a href="/">Volver al inicio</a> — Contacto: <a href="mailto:contacto@rr-raab.com">contacto@rr-raab.com</a></small></footer>
-  </main>
-
-  <a class="wa-fab" href="https://wa.me/3517059319?text=Hola%20te%20escribo%20para%20solicitar%20un%20servicio%20de%20RR%20Servicios%20Integrales" target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path fill="#fff" d="M12 2a10 10 0 0 0-8.66 15.03L2 22l5.15-1.31A10 10 0 1 0 12 2zm5.52 14.07c-.23.65-1.33 1.24-1.88 1.26-.48.02-1.09.17-3.7-.76-3.12-1.11-5.13-4.09-5.29-4.28-.15-.19-1.27-1.69-1.27-3.22 0-1.53.8-2.28 1.09-2.6.29-.32.64-.4.86-.4h.62c.2 0 .46-.08.72.55.26.63.88 2.16.96 2.32.08.16.13.34.03.55-.1.21-.15.34-.29.52-.15.17-.29.38-.41.51-.14.15-.29.31-.12.6.16.29.72 1.18 1.54 1.92 1.06.95 1.95 1.25 2.22 1.39.27.14.48.12.66-.07.2-.2.76-.9.97-1.21.21-.31.41-.26.68-.16.27.1 1.72.81 2.02.95.29.14.49.22.56.34.07.12.07.68-.16 1.33z"/>
-    </svg>
-  </a>
-
-  <script src="/cadeteria.js" type="module"></script>
+    <form id="comandaForm" class="grid">
+      <label>Nombre y apellido
+        <input name="nombre" required placeholder="Juan Pérez" />
+      </label>
+      <label>Teléfono (WhatsApp)
+        <input name="telefono" required inputmode="tel" placeholder="351 7xx xxxx" />
+      </label>
+      <label class="col-span-2">Dirección de retiro/entrega (indicar ambas si aplica)
+        <textarea name="direccion" required placeholder="Ej: Retiro: San Martín 123 — Entrega: Colón 456"></textarea>
+      </label>
+      <label>Fecha y hora de entrega
+        <input type="datetime-local" name="fechaHora" required />
+      </label>
+      <label>Vehículo
+        <select name="vehiculo" required>
+          <option value="">Elegí una opción…</option>
+          <option value="auto">Auto</option>
+          <option value="moto">Moto</option>
+        </select>
+      </label>
+      <label class="col-span-2">Indicaciones para el cadete (opcional)
+        <textarea name="indicaciones" placeholder="Ej: Timbre 3C, dejar en portería, llamar al llegar…"></textarea>
+      </label>
+      <button type="submit" class="btn-primary col-span-2">Enviar comanda</button>
+      <p id="status" class="status" aria-live="polite"></p>
+    </form>
+  </section>
+  <footer><small>© RR — <a href="/">Volver al inicio</a> — Contacto: <a href="mailto:contacto@rr-raab.com">contacto@rr-raab.com</a></small></footer>
+</main>
+<a class="wa-fab" href="https://wa.me/3517059319?text=Hola%20te%20escribo%20para%20solicitar%20un%20servicio%20de%20RR%20Servicios%20Integrales" target="_blank" rel="noopener" aria-label="Chatear por WhatsApp"></a>
+<script src="/cadeteria.js" type="module"></script>
 </body>
 </html>

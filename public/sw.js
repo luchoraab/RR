@@ -1,4 +1,4 @@
-const CACHE_NAME = "rr-v4";
+const CACHE_NAME = "rr-v5";
 const ASSETS = [
   "/", "/index.html",
   "/cadeteria.html", "/transporte.html",
