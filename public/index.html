@@ -1,6 +1,18 @@
 <!doctype html>
 <html lang="es">
 <head>
+<!-- Favicon -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/icons/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+
+<!-- PWA / Manifest -->
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#144b9a">
+
+<!-- iOS standalone -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RR — Elegí tu servicio</title>
@@ -29,6 +41,39 @@
       <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:18px">
         <a class="btn-primary" href="/cadeteria.html">Cadetería</a>
         <a class="btn-outline" href="/transporte.html">Transporte / Remis</a>
+<!-- Botón para instalar la app en el celular -->
+<button id="installBtn" class="btn-outline" style="display:none; margin-top:12px" onclick="installPWA()">
+  Instalar en el celular
+</button>
+
+<script>
+  // Registrar Service Worker
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("/sw.js");
+    });
+  }
+
+  // Lógica del botón "Instalar"
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const btn = document.getElementById('installBtn');
+    if (btn) btn.style.display = 'inline-block';
+  });
+
+  async function installPWA() {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    const btn = document.getElementById('installBtn');
+    if (btn) btn.style.display = 'none';
+    console.log('PWA install', outcome);
+  }
+</script>
+
       </div>
     </section>
 
