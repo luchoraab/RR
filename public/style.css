@@ -28,8 +28,10 @@ input, textarea, select { width: 100%; padding: 12px 14px; border: 1px solid #df
 textarea { min-height: 104px; resize: vertical; }
 input:focus, textarea:focus, select:focus { outline: 2px solid var(--rr-blue-200); border-color: var(--rr-blue); box-shadow: 0 0 0 2px rgba(20,75,154,.12); }
 
-.btn-primary { padding: 14px 18px; border: 0; border-radius: 14px; background: var(--rr-blue); color: var(--rr-white); font-weight: 700; cursor: pointer; }
+.btn-primary { padding: 14px 18px; border: 0; border-radius: 14px; background: var(--rr-blue); color: var(--rr-white); font-weight: 700; cursor: pointer; text-decoration:none; display:inline-block; }
 .btn-primary:hover { filter: brightness(1.06); }
+.btn-outline { padding: 14px 18px; border: 2px solid var(--rr-blue); border-radius: 14px; color: var(--rr-blue); font-weight: 700; cursor: pointer; background: transparent; text-decoration:none; display:inline-block; }
+.btn-outline:hover { filter: brightness(0.95); }
 .status { min-height: 1.25rem; color: var(--rr-black); font-size: .95rem; }
 
 footer { margin: 28px 0; color: #6b7280; text-align:center; }
