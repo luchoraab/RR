@@ -1,43 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RR — Elegí tu servicio</title>
-  <link rel="stylesheet" href="/style.css" />
-  <link rel="manifest" href="/manifest.webmanifest">
-  <link rel="icon" type="image/png" href="/icon-32.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RR Servicios Integrales</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="style.css">
+  <script src="pwa-install-snippet.js" defer></script>
 </head>
 <body>
-  <header class="brand">
-    <div class="brand__bar"></div>
-    <div class="brand__wrap container">
-      <a href="/"><img src="/logo.png" alt="RR" class="brand__logo"/></a>
-      <div class="brand__text">
-        <h1>RR</h1>
-        <p>Privado, seguro y de confianza</p>
-      </div>
-    </div>
-    <div class="brand__bar brand__bar--bottom"></div>
+  <header>
+    <img src="logo.png" alt="RR Logo" class="logo">
+    <h1>RR Servicios Integrales</h1>
+    <p>Privado, seguro y de confianza</p>
   </header>
 
-  <main class="container">
-    <section class="card center">
-      <div style="max-width:520px;width:100%">
-        <h2 style="text-align:center;margin:6px 0 10px 0">¿Qué servicio necesitás?</h2>
-        <p class="muted" style="text-align:center">Elegí una opción para continuar</p>
-        <div class="actions">
-          <a class="btn primary" href="/cadeteria.html">Cadetería</a>
-          <a class="btn" href="/transporte.html">Transporte / Remis</a>
-          <button id="installBtn" class="btn col-span-2" style="margin-top:4px">Instalar APP</button>
-        </div>
-      </div>
-    </section>
-    <footer>
-      <small>© RR — Contacto: <a href="mailto:contacto@rr-raab.com">contacto@rr-raab.com</a></small>
-    </footer>
+  <main>
+    <h2>¿Qué servicio necesitás?</h2>
+    <div class="button-container">
+      <a href="cadeteria.html" class="btn">Cadetería</a>
+      <a href="transporte.html" class="btn">Transporte / Remis</a>
+      <button id="installApp" class="btn">Instalar APP</button>
+    </div>
   </main>
 
-  <script src="/pwa-install-snippet.js" type="module"></script>
+  <footer>
+    <p>© RR — Contacto: <a href="mailto:contacto@rr-raab.com">contacto@rr-raab.com</a></p>
+  </footer>
 </body>
 </html>

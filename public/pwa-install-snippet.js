@@ -1,21 +1,16 @@
-
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js');
-}
 let deferredPrompt;
-const btn = document.getElementById('installBtn');
-window.addEventListener('beforeinstallprompt', (e)=>{
+const installBtn = document.getElementById('installApp');
+
+window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  if(btn) btn.style.display = 'inline-block';
+  installBtn.style.display = 'block';
 });
-if(btn){
-  btn.style.display = 'none';
-  btn.addEventListener('click', async ()=>{
-    if(!deferredPrompt) return;
+
+installBtn.addEventListener('click', async () => {
+  if (deferredPrompt) {
     deferredPrompt.prompt();
-    await deferredPrompt.userChoice;
+    const choiceResult = await deferredPrompt.userChoice;
     deferredPrompt = null;
-    btn.style.display = 'none';
-  });
-}
+  }
+});
