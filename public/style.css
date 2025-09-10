@@ -1,0 +1,16 @@
+body { font-family: Arial, sans-serif; margin: 0; background: #f5f7fa; }
+header { text-align: center; padding: 20px; border-bottom: 4px solid #1e56a0; }
+header .logo img { height: 60px; }
+main { display: flex; justify-content: center; align-items: center; padding: 40px; }
+.card { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; }
+.button-group { display: flex; gap: 15px; justify-content: center; margin: 20px 0; flex-wrap: wrap; }
+.btn { background: #fff; border: 2px solid #1e56a0; padding: 10px 20px; border-radius: 8px; text-decoration: none; color: #1e56a0; font-weight: bold; transition: 0.3s; }
+.btn:hover { background: #1e56a0; color: #fff; }
+.btn.install { margin-top: 15px; display: inline-block; }
+form { display: grid; gap: 10px; margin-top: 15px; }
+input, select, textarea, button { padding: 10px; border: 1px solid #ccc; border-radius: 6px; width: 100%; box-sizing: border-box; }
+button { background: #1e56a0; color: #fff; font-weight: bold; border: none; cursor: pointer; }
+button:hover { background: #163d73; }
+footer { text-align: center; padding: 20px; margin-top: 20px; font-size: 14px; }
+.whatsapp-float { position: fixed; width: 56px; height: 56px; bottom: 20px; right: 20px; background-color: #25d366; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
+.whatsapp-float::before { content: "📱"; display: flex; align-items: center; justify-content: center; font-size: 28px; color: #fff; height: 100%; }
