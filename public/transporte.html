@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RR — Solicitar Transporte</title>
+  <title>RR — Transporte / Remis</title>
   <link rel="stylesheet" href="/style.css" />
   <link rel="stylesheet" href="/rr-overrides.css" />
 </head>
 <body>
+
   <header class="brand">
     <div class="brand__bar"></div>
     <div class="brand__wrap container">
@@ -15,7 +16,8 @@
         <img src="/logo.png" alt="RR" class="brand__logo" />
       </a>
       <div class="brand__text">
-        <h1>RR Servicios Integrales</h1><p>Transporte</p>
+        <h1>RR Servicios Integrales</h1>
+        <p>Transporte</p>
       </div>
     </div>
     <div class="brand__bar brand__bar--bottom"></div>
@@ -25,13 +27,53 @@
     <section class="card form-card">
       <h2>Solicitar Transporte</h2>
       <p class="muted">Completá el formulario y te confirmamos por WhatsApp.</p>
-      <div id="form-root"></div>
+
+      <form id="transporteForm" class="grid">
+        <label>Nombre y apellido
+          <input name="nombre" required placeholder="Juan Pérez" />
+        </label>
+        <label>Teléfono (WhatsApp)
+          <input name="telefono" required inputmode="tel" placeholder="351 7xx xxxx" />
+        </label>
+        <label class="col-span-2">Dirección de búsqueda
+          <textarea name="direccionOrigen" required placeholder="Ej: San Martín 123, Córdoba"></textarea>
+        </label>
+        <label class="col-span-2">Dirección de destino
+          <textarea name="direccionDestino" required placeholder="Ej: Colón 456, Córdoba"></textarea>
+        </label>
+        <label>Fecha y hora de búsqueda
+          <input type="datetime-local" name="fechaHoraBusqueda" required />
+        </label>
+        <label>Vehículo
+          <select name="vehiculo" required>
+            <option value="">Elegí una opción…</option>
+            <option value="auto">Auto</option>
+            <option value="moto">Moto</option>
+          </select>
+        </label>
+        <label class="col-span-2">Indicaciones para el transportista (opcional)
+          <textarea name="indicaciones" placeholder="Ej: Timbre 3C, llamar al llegar, silla para niño…"></textarea>
+        </label>
+        <label class="col-span-2">¿Con qué frecuencia necesitás el viaje?
+          <select name="frecuencia" required>
+            <option value="">Elegí una opción…</option>
+            <option value="unica">Única vez</option>
+            <option value="diaria">Diario</option>
+            <option value="semanal">Semanal</option>
+            <option value="mensual">Mensual</option>
+          </select>
+        </label>
+        <button type="submit" class="btn-primary col-span-2">Enviar solicitud</button>
+        <p id="status" class="status" aria-live="polite"></p>
+      </form>
     </section>
     <footer><small>© RR — <a href="/">Volver al inicio</a> — Contacto: <a href="mailto:contacto@rr-raab.com">contacto@rr-raab.com</a></small></footer>
   </main>
 
   <a class="wa-fab" href="https://wa.me/3517059319?text=Hola%20te%20escribo%20para%20solicitar%20un%20servicio%20de%20RR%20Servicios%20Integrales" target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
-    <img src="/whatsapp.svg" alt="WhatsApp" />
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="#fff" d="M12 2a10 10 0 0 0-8.66 15.03L2 22l5.15-1.31A10 10 0 1 0 12 2zm5.52 14.07c-.23.65-1.33 1.24-1.88 1.26-.48.02-1.09.17-3.7-.76-3.12-1.11-5.13-4.09-5.29-4.28-.15-.19-1.27-1.69-1.27-3.22 0-1.53.8-2.28 1.09-2.6.29-.32.64-.4.86-.4h.62c.2 0 .46-.08.72.55.26.63.88 2.16.96 2.32.08.16.13.34.03.55-.1.21-.15.34-.29.52-.15.17-.29.38-.41.51-.14.15-.29.31-.12.6.16.29.72 1.18 1.54 1.92 1.06.95 1.95 1.25 2.22 1.39.27.14.48.12.66-.07.2-.2.76-.9.97-1.21.21-.31.41-.26.68-.16.27.1 1.72.81 2.02.95.29.14.49.22.56.34.07.12.07.68-.16 1.33z"/>
+    </svg>
   </a>
 
   <script src="/transporte.js" type="module"></script>

@@ -1,27 +1,42 @@
+/* ===== Overrides RR ===== */
 
-/* Floating WhatsApp button */
-.wa-fab {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: #25D366;
-  box-shadow: 0 8px 18px rgba(0,0,0,.25);
-  display: grid;
-  place-items: center;
-  z-index: 9999;
-  transition: transform .15s ease-in-out, box-shadow .15s ease-in-out;
+/* Unified buttons */
+.btn-option{
+  display:inline-block;
+  min-width:200px;
+  padding:14px 20px;
+  border:2px solid var(--rr-blue);
+  border-radius:14px;
+  background:var(--rr-white);
+  color:var(--rr-blue);
+  font-weight:700;
+  text-align:center;
+  cursor:pointer;
+  transition:all .2s ease-in-out;
+  text-decoration:none;
 }
-.wa-fab:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(0,0,0,.28); }
-.wa-fab img { width: 28px; height: 28px; display:block; filter: drop-shadow(0 1px 0 rgba(0,0,0,.1)); }
-@media (max-width: 640px) {
-  .wa-fab { right: 14px; bottom: 14px; width: 52px; height: 52px; }
-  .wa-fab img { width: 26px; height: 26px; }
-}
-/* Button stack and unified look */
-.options-stack { display:flex; flex-direction:column; align-items:center; gap:16px; margin-top:18px; }
-.btn-option{  display:inline-block; min-width:200px; padding:14px 20px; border:2px solid var(--rr-blue); border-radius:14px; background:var(--rr-white); color:var(--rr-blue); font-weight:700; text-align:center; cursor:pointer; transition:all .2s ease-in-out; text-decoration:none; }
 .btn-option:hover{ background:var(--rr-blue); color:var(--rr-white); }
 #installBtn{ display:none; margin-top:16px; width:100%; }
+.options-stack{ display:flex; flex-direction:column; align-items:center; gap:16px; margin-top:18px; }
+
+/* Floating WhatsApp (SMALL) */
+.wa-fab{
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  background:#25D366;
+  box-shadow:0 8px 18px rgba(0,0,0,.25);
+  display:grid;
+  place-items:center;
+  z-index:9999;
+  transition:transform .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+.wa-fab:hover{ transform:translateY(-2px); box-shadow:0 12px 24px rgba(0,0,0,.28); }
+.wa-fab svg{ width:28px; height:28px; display:block; }
+@media (max-width:640px){
+  .wa-fab{ right:12px; bottom:12px; width:52px; height:52px; }
+  .wa-fab svg{ width:26px; height:26px; }
+}
