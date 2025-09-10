@@ -1,13 +1,75 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Transporte</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RR Transporte — Solicitar viaje</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" href="/icon-32.png">
 </head>
 <body>
-  <h1>Servicio de Transporte</h1>
-  <p>Formulario de solicitud (placeholder)</p>
-  <a href="index.html">⬅ Volver</a>
+  <header class="brand">
+    <div class="brand__bar"></div>
+    <div class="brand__wrap container">
+      <a href="/"><img src="/logo.png" alt="RR" class="brand__logo"/></a>
+      <div class="brand__text">
+        <h1>RR Servicios Integrales</h1>
+        <p>Transporte</p>
+      </div>
+    </div>
+    <div class="brand__bar brand__bar--bottom"></div>
+  </header>
+
+  <main class="container">
+    <section class="card form-card">
+      <h2>Solicitar Transporte</h2>
+      <p class="muted">Completá el formulario y te confirmamos por WhatsApp.</p>
+
+      <form id="traForm" class="grid">
+        <label>Nombre y apellido
+          <input name="nombre" required placeholder="Juan Pérez" />
+        </label>
+        <label>Teléfono (WhatsApp)
+          <input name="telefono" required inputmode="tel" placeholder="351 7xx xxxx" />
+        </label>
+        <label>Dirección donde se busca
+          <input name="origen" required placeholder="San Martín 123, Córdoba" />
+        </label>
+        <label>Dirección donde se lleva
+          <input name="destino" required placeholder="Colón 456, Córdoba" />
+        </label>
+        <label>Fecha y hora de búsqueda
+          <input name="fechaHora" type="datetime-local" required />
+        </label>
+        <label>Vehículo
+          <select name="vehiculo" required>
+            <option value="">Elegí una opción…</option>
+            <option value="auto">Auto</option>
+            <option value="camioneta">Camioneta</option>
+          </select>
+        </label>
+        <label class="col-span-2">Indicaciones para el transportista (opcional)
+          <textarea name="indicaciones" placeholder="Piso, timbre, referencias…"></textarea>
+        </label>
+        <label class="col-span-2">¿Desea programar el viaje?
+          <select name="periodicidad">
+            <option value="Única vez">Única vez</option>
+            <option value="Diario">Diario</option>
+            <option value="Semanal">Semanal</option>
+            <option value="Mensual">Mensual</option>
+          </select>
+        </label>
+
+        <button type="submit" class="btn primary col-span-2">Enviar solicitud</button>
+        <p id="status" class="status" aria-live="polite"></p>
+      </form>
+    </section>
+    <footer>
+      <small>© RR — <a href="/">Volver al inicio</a> — Contacto: <a href="mailto:contacto@rr-raab.com">contacto@rr-raab.com</a></small>
+    </footer>
+  </main>
+
+  <script src="/transporte.js" type="module"></script>
 </body>
 </html>
