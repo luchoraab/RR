@@ -1,8 +1,9 @@
-const CACHE_NAME = "rr-v1";
+const CACHE_NAME = "rr-v2"; // bump to force clients to fetch new files
 const ASSETS = [
   "/", "/index.html",
   "/cadeteria.html", "/transporte.html",
-  "/style.css", "/cadeteria.js", "/transporte.js",
+  "/style.css", "/rr-overrides.css",
+  "/cadeteria.js", "/transporte.js",
   "/logo.png", "/manifest.webmanifest"
 ];
 
@@ -18,7 +19,6 @@ self.addEventListener("activate", (e) => {
   );
 });
 
-// Network-first para HTML; cache-first para estáticos
 self.addEventListener("fetch", (e) => {
   const req = e.request;
   const isHTML = req.headers.get("accept")?.includes("text/html");

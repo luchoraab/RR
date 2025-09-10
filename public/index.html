@@ -5,12 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RR — Elegí tu servicio</title>
   <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/rr-overrides.css" />
 </head>
 <body>
   <header class="brand">
     <div class="brand__bar"></div>
     <div class="brand__wrap container">
-      <img src="/logo.png" alt="RR" class="brand__logo" />
+      <a href="/" class="brand__home" aria-label="Ir al inicio">
+        <img src="/logo.png" alt="RR" class="brand__logo" />
+      </a>
       <div class="brand__text">
         <h1>RR</h1>
         <p>Privado, seguro y de confianza</p>
@@ -24,14 +27,10 @@
       <h2>¿Qué servicio necesitás?</h2>
       <p class="muted">Elegí una opción para continuar</p>
 
-      <div style="display:flex; flex-direction:column; align-items:center; gap:16px; margin-top:18px">
+      <div class="options-stack">
         <a class="btn-option" href="/cadeteria.html">Cadetería</a>
         <a class="btn-option" href="/transporte.html">Transporte / Remis</a>
-
-        <!-- Botón para instalar la app en el celular -->
-        <button id="installBtn" class="btn-option" onclick="installPWA()">
-          Instalar APP
-        </button>
+        <button id="installBtn" class="btn-option" onclick="installPWA()">Instalar APP</button>
       </div>
     </section>
 

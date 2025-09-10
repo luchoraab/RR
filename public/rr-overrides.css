@@ -1,0 +1,19 @@
+/* RR UI overrides: botones iguales + hover invertido */
+.btn-option{
+  display:inline-block;
+  min-width:200px;
+  padding:14px 20px;
+  border:2px solid var(--rr-blue);
+  border-radius:14px;
+  background:var(--rr-white);
+  color:var(--rr-blue);
+  font-weight:700;
+  text-align:center;
+  cursor:pointer;
+  transition:all .2s ease-in-out;
+  text-decoration:none;
+}
+.btn-option:hover{ background:var(--rr-blue); color:var(--rr-white); }
+#installBtn{ display:none; margin-top:16px; width:100%; }
+/* helpers for container of options */
+.options-stack{ display:flex; flex-direction:column; align-items:center; gap:16px; margin-top:18px; }
