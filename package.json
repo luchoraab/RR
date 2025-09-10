@@ -1,15 +1,12 @@
 {
   "name": "cadeteria-app",
   "version": "1.0.0",
-  "type": "module",
+  "description": "RR Servicios Integrales - Cadetería y Transporte",
+  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "NODE_ENV=development node server.js"
+    "start": "node server.js"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "exceljs": "^4.4.0",
-    "express": "^4.19.2",
-    "nodemailer": "^6.9.14"
+    "express": "^4.18.2"
   }
 }
