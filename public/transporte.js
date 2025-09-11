@@ -1,23 +1,16 @@
 
-async function postJSON(url, data){
-  const r = await fetch(url, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)});
-  return r.json();
-}
-const form = document.getElementById('traForm');
+const form = document.getElementById('formTrans');
 const statusEl = document.getElementById('status');
 form.addEventListener('submit', async (e)=>{
   e.preventDefault();
   statusEl.textContent = 'Enviando…';
   const data = Object.fromEntries(new FormData(form).entries());
   try{
-    const resp = await postJSON('/api/transporte', data);
-    if(resp.ok){
-      statusEl.textContent = '¡Listo! Te confirmamos por email/WhatsApp.';
-      form.reset();
-    }else{
-      statusEl.textContent = 'Error: ' + (resp.error || 'no se pudo enviar');
-    }
+    const res = await fetch('/api/transporte',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    const json = await res.json();
+    statusEl.textContent = json.ok ? '¡Listo! Recibimos tu solicitud.' : (json.error || 'Error al enviar');
+    if(json.ok) form.reset();
   }catch(err){
-    statusEl.textContent = 'Error al enviar: ' + err.message;
+    statusEl.textContent = 'Error de red';
   }
 });

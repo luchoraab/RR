@@ -1,16 +1,16 @@
-let deferredPrompt;
-const installBtn = document.getElementById('installApp');
 
-window.addEventListener('beforeinstallprompt', (e) => {
+let deferredPrompt;
+const btn = document.getElementById('installBtn');
+window.addEventListener('beforeinstallprompt', (e)=>{
   e.preventDefault();
   deferredPrompt = e;
-  installBtn.style.display = 'block';
+  if(btn){ btn.disabled = false; }
 });
-
-installBtn.addEventListener('click', async () => {
-  if (deferredPrompt) {
+if(btn){
+  btn.addEventListener('click', async ()=>{
+    if(!deferredPrompt) { alert('Si tu navegador lo permite, aparecerá la opción de instalar.'); return; }
     deferredPrompt.prompt();
-    const choiceResult = await deferredPrompt.userChoice;
+    await deferredPrompt.userChoice;
     deferredPrompt = null;
-  }
-});
+  });
+}

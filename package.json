@@ -1,16 +1,16 @@
 {
-  "name": "rr-servicios",
+  "name": "cadeteria-app",
   "version": "1.0.0",
-  "description": "RR Servicios Integrales - WebApp con PWA y backend",
+  "description": "RR Servicios \u2014 Cadeter\u00eda y Transporte con env\u00edo de Excel por email (+PWA)",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
-    "nodemailer": "^6.9.11",
-    "exceljs": "^4.4.0"
+    "dotenv": "^16.4.5",
+    "exceljs": "^4.4.0",
+    "express": "^4.19.2",
+    "nodemailer": "^6.9.11"
   }
 }

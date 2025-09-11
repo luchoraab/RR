@@ -1,67 +1,78 @@
+
 const express = require('express');
 const path = require('path');
-const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const ExcelJS = require('exceljs');
-require('dotenv').config();
+const dotenv = require('dotenv');
+const cors = require('cors');
+
+dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 10000;
-
-app.use(bodyParser.json());
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Configuración de Nodemailer
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
-  port: process.env.SMTP_PORT,
-  secure: process.env.SMTP_SECURE === 'true',
+  port: Number(process.env.SMTP_PORT) || 465,
+  secure: (process.env.SMTP_SECURE || 'true') === 'true',
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS
   }
 });
 
-async function enviarFormulario(data, tipo) {
-  const workbook = new ExcelJS.Workbook();
-  const sheet = workbook.addWorksheet('Datos');
-  sheet.addRow(Object.keys(data));
-  sheet.addRow(Object.values(data));
+async function sendExcelMail(subject, fields, to = process.env.TO_EMAIL) {
+  const wb = new ExcelJS.Workbook();
+  const ws = wb.addWorksheet('Solicitud');
 
-  const buffer = await workbook.xlsx.writeBuffer();
+  const headers = Object.keys(fields);
+  ws.addRow(headers);
+  ws.addRow(headers.map(h => fields[h] ?? ''));
 
-  await transporter.sendMail({
-    from: process.env.SMTP_FROM,
-    to: process.env.TO_EMAIL,
-    subject: `Nueva solicitud de ${tipo}`,
-    text: `Datos recibidos:\n${JSON.stringify(data, null, 2)}`,
-    attachments: [
-      {
-        filename: `${tipo}.xlsx`,
-        content: buffer
-      }
-    ]
+  const buf = await wb.xlsx.writeBuffer();
+
+  const info = await transporter.sendMail({
+    from: process.env.FROM_EMAIL || process.env.SMTP_USER,
+    to,
+    subject,
+    text: JSON.stringify(fields, null, 2),
+    attachments: [{
+      filename: `${subject.replace(/\s+/g,'_')}.xlsx`,
+      content: buf
+    }]
   });
+  return info;
 }
 
 app.post('/api/cadeteria', async (req, res) => {
   try {
-    await enviarFormulario(req.body, 'Cadetería');
-    res.json({ success: true });
-  } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
+    const data = req.body;
+    await sendExcelMail('Comanda_Cadeteria', data);
+    res.json({ ok: true, message: 'Comanda enviada por email.' });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ ok: false, error: 'No se pudo enviar el email.' });
   }
 });
 
 app.post('/api/transporte', async (req, res) => {
   try {
-    await enviarFormulario(req.body, 'Transporte');
-    res.json({ success: true });
-  } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
+    const data = req.body;
+    await sendExcelMail('Solicitud_Transporte', data);
+    res.json({ ok: true, message: 'Solicitud enviada por email.' });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ ok: false, error: 'No se pudo enviar el email.' });
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Servidor escuchando en http://localhost:${PORT}`);
+// fallback
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log('Servidor escuchando en http://localhost:' + PORT));
