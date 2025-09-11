@@ -5,16 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RR — Elegí tu servicio</title>
   <link rel="stylesheet" href="/style.css" />
-  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" href="/icon-32.png">
 </head>
 <body>
-
   <header class="brand">
     <div class="brand__bar"></div>
     <div class="brand__wrap container">
-      <a href="/index.html" class="brand__home" aria-label="Ir al inicio">
-        <img src="/icon-192.png" alt="RR" class="brand__logo" />
-      </a>
+      <a href="/"><img src="/logo.png" alt="RR" class="brand__logo"/></a>
       <div class="brand__text">
         <h1>RR</h1>
         <p>Privado, seguro y de confianza</p>
@@ -24,19 +22,22 @@
   </header>
 
   <main class="container">
-    <section class="card" style="text-align:center; padding:28px">
-      <h2>¿Qué servicio necesitás?</h2>
-      <p class="muted">Elegí una opción para continuar</p>
-      <div class="options-stack">
-        <a class="btn-option" href="/cadeteria.html">Cadetería</a>
-        <a class="btn-option" href="/transporte.html">Transporte / Remis</a>
-        <button id="installBtn" class="btn-option" hidden>Instalar APP</button>
+    <section class="card center">
+      <div style="max-width:520px;width:100%">
+        <h2 style="text-align:center;margin:6px 0 10px 0">¿Qué servicio necesitás?</h2>
+        <p class="muted" style="text-align:center">Elegí una opción para continuar</p>
+        <div class="actions">
+          <a class="btn primary" href="/cadeteria.html">Cadetería</a>
+          <a class="btn" href="/transporte.html">Transporte / Remis</a>
+          <button id="installBtn" class="btn col-span-2" style="margin-top:4px">Instalar APP</button>
+        </div>
       </div>
     </section>
     <footer>
       <small>© RR — Contacto: <a href="mailto:contacto@rr-raab.com">contacto@rr-raab.com</a></small>
     </footer>
   </main>
-  <script src="/app.js" defer></script>
+
+  <script src="/pwa-install-snippet.js" type="module"></script>
 </body>
 </html>

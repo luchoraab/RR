@@ -1,6 +1,15 @@
 
-const CACHE_NAME = "rr-restore-v1";
-const ASSETS = ["/","/index.html","/style.css","/app.js","/cadeteria.html","/transporte.html","/manifest.webmanifest","/icon-192.png","/icon-512.png"];
-self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(ASSETS))); self.skipWaiting(); });
-self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k!==CACHE_NAME).map(k => caches.delete(k))))); self.clients.claim(); });
-self.addEventListener("fetch", e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))); });
+self.addEventListener('install', (e)=>{
+  e.waitUntil((async()=>{
+    const cache = await caches.open('rr-static-v1');
+    await cache.addAll(['/','/style.css','/logo.png','/index.html']);
+  })());
+  self.skipWaiting();
+});
+self.addEventListener('activate', (e)=> self.clients.claim());
+self.addEventListener('fetch', (e)=>{
+  e.respondWith((async()=>{
+    const res = await caches.match(e.request);
+    return res || fetch(e.request);
+  })());
+});

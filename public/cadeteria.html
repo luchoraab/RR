@@ -3,21 +3,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RR — Cadetería</title>
+  <title>RR Cadetería — Solicitar envío</title>
   <link rel="stylesheet" href="/style.css" />
-  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" href="/icon-32.png">
 </head>
 <body>
-
   <header class="brand">
     <div class="brand__bar"></div>
     <div class="brand__wrap container">
-      <a href="/index.html" class="brand__home" aria-label="Ir al inicio">
-        <img src="/icon-192.png" alt="RR" class="brand__logo" />
-      </a>
+      <a href="/"><img src="/logo.png" alt="RR" class="brand__logo"/></a>
       <div class="brand__text">
-        <h1>RR</h1>
-        <p>Privado, seguro y de confianza</p>
+        <h1>RR Servicios Integrales</h1>
+        <p>Cadetería</p>
       </div>
     </div>
     <div class="brand__bar brand__bar--bottom"></div>
@@ -28,7 +26,7 @@
       <h2>Solicitar envío (Cadetería)</h2>
       <p class="muted">Completá el formulario y te confirmamos por WhatsApp.</p>
 
-      <form id="comandaForm" class="grid" method="post" action="/api/cadeteria">
+      <form id="cadForm" class="grid">
         <label>Nombre y apellido
           <input name="nombre" required placeholder="Juan Pérez" />
         </label>
@@ -36,10 +34,10 @@
           <input name="telefono" required inputmode="tel" placeholder="351 7xx xxxx" />
         </label>
         <label class="col-span-2">Dirección de retiro/entrega (indicar ambas si aplica)
-          <textarea name="direccion" required placeholder="Ej: Retiro: San Martín 123 — Entrega: Colón 456"></textarea>
+          <textarea name="direccion" required placeholder="Retiro: ... — Entrega: ..."></textarea>
         </label>
         <label>Fecha y hora de entrega
-          <input type="datetime-local" name="fechaHora" required />
+          <input name="entregaFechaHora" type="datetime-local" required />
         </label>
         <label>Vehículo
           <select name="vehiculo" required>
@@ -49,14 +47,18 @@
           </select>
         </label>
         <label class="col-span-2">Indicaciones para el cadete (opcional)
-          <textarea name="indicaciones" placeholder="Ej: Timbre 3C, dejar en portería, llamar al llegar…"></textarea>
+          <textarea name="indicaciones" placeholder="Piso, timbre, referencias…"></textarea>
         </label>
-        <button type="submit" class="btn-primary col-span-2">Enviar comanda</button>
+
+        <button type="submit" class="btn primary col-span-2">Enviar comanda</button>
         <p id="status" class="status" aria-live="polite"></p>
       </form>
     </section>
-    <footer><small>© RR — <a href="/index.html">Volver al inicio</a> — Contacto: <a href="mailto:contacto@rr-raab.com">contacto@rr-raab.com</a></small></footer>
+    <footer>
+      <small>© RR — <a href="/">Volver al inicio</a> — Contacto: <a href="mailto:contacto@rr-raab.com">contacto@rr-raab.com</a></small>
+    </footer>
   </main>
-  <script src="/app.js" defer></script>
+
+  <script src="/cadeteria.js" type="module"></script>
 </body>
 </html>
