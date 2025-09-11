@@ -1,41 +1,45 @@
-
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RR — Cadetería</title>
-  <link rel="manifest" href="/manifest.webmanifest">
-  <link rel="stylesheet" href="/style.css"/>
-  <link rel="icon" href="/favicon.ico"/>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="manifest" href="/manifest.webmanifest" />
 </head>
 <body>
+
   <header class="brand">
     <div class="brand__bar"></div>
     <div class="brand__wrap container">
-      <a href="/" aria-label="Volver al inicio"><img src="/logo.png" class="brand__logo" alt="RR"/></a>
-      <div class="brand__text"><h1>RR Servicios Integrales</h1><p>Cadetería</p></div>
+      <a href="/index.html" class="brand__home" aria-label="Ir al inicio">
+        <img src="/icon-192.png" alt="RR" class="brand__logo" />
+      </a>
+      <div class="brand__text">
+        <h1>RR</h1>
+        <p>Privado, seguro y de confianza</p>
+      </div>
     </div>
-    <div class="brand__bar"></div>
+    <div class="brand__bar brand__bar--bottom"></div>
   </header>
 
-  <main class="container center">
-    <section class="card" style="width:100%">
-      <h2 style="margin:0 0 6px 0;">Solicitar envío (Cadetería)</h2>
+  <main class="container">
+    <section class="card form-card">
+      <h2>Solicitar envío (Cadetería)</h2>
       <p class="muted">Completá el formulario y te confirmamos por WhatsApp.</p>
 
-      <form id="formCad" class="grid" autocomplete="on">
+      <form id="comandaForm" class="grid" method="post" action="/api/cadeteria">
         <label>Nombre y apellido
-          <input name="nombre" required placeholder="Juan Pérez">
+          <input name="nombre" required placeholder="Juan Pérez" />
         </label>
         <label>Teléfono (WhatsApp)
-          <input name="telefono" required inputmode="tel" placeholder="351 7xx xxxx">
+          <input name="telefono" required inputmode="tel" placeholder="351 7xx xxxx" />
         </label>
         <label class="col-span-2">Dirección de retiro/entrega (indicar ambas si aplica)
-          <textarea name="direccion" required placeholder="Retiro: ... — Entrega: ..."></textarea>
+          <textarea name="direccion" required placeholder="Ej: Retiro: San Martín 123 — Entrega: Colón 456"></textarea>
         </label>
         <label>Fecha y hora de entrega
-          <input type="datetime-local" name="fechaHora" required>
+          <input type="datetime-local" name="fechaHora" required />
         </label>
         <label>Vehículo
           <select name="vehiculo" required>
@@ -45,16 +49,14 @@
           </select>
         </label>
         <label class="col-span-2">Indicaciones para el cadete (opcional)
-          <textarea name="indicaciones" placeholder="Referencias, piso, timbre…"></textarea>
+          <textarea name="indicaciones" placeholder="Ej: Timbre 3C, dejar en portería, llamar al llegar…"></textarea>
         </label>
-        <button class="rr-btn col-span-2" type="submit">Enviar comanda</button>
-        <p id="status" class="status col-span-2" aria-live="polite"></p>
+        <button type="submit" class="btn-primary col-span-2">Enviar comanda</button>
+        <p id="status" class="status" aria-live="polite"></p>
       </form>
     </section>
-    <footer><small>© RR — <a href="/">Volver al inicio</a> — Contacto: <a href="mailto:contacto@rr-raab.com">contacto@rr-raab.com</a></small></footer>
+    <footer><small>© RR — <a href="/index.html">Volver al inicio</a> — Contacto: <a href="mailto:contacto@rr-raab.com">contacto@rr-raab.com</a></small></footer>
   </main>
-
-  <script src="/cadeteria.js" type="module"></script>
-  <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}</script>
+  <script src="/app.js" defer></script>
 </body>
 </html>

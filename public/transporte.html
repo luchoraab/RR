@@ -1,46 +1,48 @@
-
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>RR — Transporte</title>
-  <link rel="manifest" href="/manifest.webmanifest">
-  <link rel="stylesheet" href="/style.css"/>
-  <link rel="icon" href="/favicon.ico"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RR — Transporte / Remis</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="manifest" href="/manifest.webmanifest" />
 </head>
 <body>
+
   <header class="brand">
     <div class="brand__bar"></div>
     <div class="brand__wrap container">
-      <a href="/" aria-label="Volver al inicio"><img src="/logo.png" class="brand__logo" alt="RR"/></a>
-      <div class="brand__text"><h1>RR Servicios Integrales</h1><p>Transporte</p></div>
+      <a href="/index.html" class="brand__home" aria-label="Ir al inicio">
+        <img src="/icon-192.png" alt="RR" class="brand__logo" />
+      </a>
+      <div class="brand__text">
+        <h1>RR</h1>
+        <p>Privado, seguro y de confianza</p>
+      </div>
     </div>
-    <div class="brand__bar"></div>
+    <div class="brand__bar brand__bar--bottom"></div>
   </header>
 
-  <main class="container center">
-    <section class="card" style="width:100%">
-      <h2 style="margin:0 0 6px 0;">Solicitar Transporte</h2>
+  <main class="container">
+    <section class="card form-card">
+      <h2>Solicitar Transporte</h2>
       <p class="muted">Completá el formulario y te confirmamos por WhatsApp.</p>
 
-      <form id="formTrans" class="grid">
+      <form id="transporteForm" class="grid" method="post" action="/api/transporte">
         <label>Nombre y apellido
-          <input name="nombre" required placeholder="Juan Pérez">
+          <input name="nombre" required placeholder="Juan Pérez" />
         </label>
         <label>Teléfono (WhatsApp)
-          <input name="telefono" required inputmode="tel" placeholder="351 7xx xxxx">
+          <input name="telefono" required inputmode="tel" placeholder="351 7xx xxxx" />
         </label>
-
-        <label>Dirección donde se busca
-          <input name="direccionOrigen" required placeholder="San Martín 123, piso 3">
+        <label class="col-span-2">Dirección donde se busca a la persona
+          <textarea name="direccionOrigen" required placeholder="Ej: San Martín 123, Córdoba"></textarea>
         </label>
-        <label>Dirección donde se lleva
-          <input name="direccionDestino" required placeholder="Colón 456">
+        <label class="col-span-2">Dirección donde se lleva a la persona
+          <textarea name="direccionDestino" required placeholder="Ej: Colón 456, Córdoba"></textarea>
         </label>
-
         <label>Fecha y hora de búsqueda
-          <input type="datetime-local" name="fechaHora" required>
+          <input type="datetime-local" name="fechaHoraBusqueda" required />
         </label>
         <label>Vehículo
           <select name="vehiculo" required>
@@ -49,29 +51,24 @@
             <option value="moto">Moto</option>
           </select>
         </label>
-
         <label class="col-span-2">Indicaciones para el transportista (opcional)
-          <textarea name="indicaciones" placeholder="Referencias, piso, timbre…"></textarea>
+          <textarea name="indicaciones" placeholder="Ej: Timbre 3C, llamar al llegar, silla para niño…"></textarea>
         </label>
-
-        <label>Repetición
-          <select name="repeticion" required>
+        <label class="col-span-2">¿El servicio es único o recurrente?
+          <select name="frecuencia" required>
+            <option value="">Elegí una opción…</option>
             <option value="unica">Única vez</option>
-            <option value="diaria">Diaria</option>
+            <option value="diaria">Diario</option>
             <option value="semanal">Semanal</option>
             <option value="mensual">Mensual</option>
           </select>
         </label>
-        <div></div>
-
-        <button class="rr-btn col-span-2" type="submit">Enviar solicitud</button>
-        <p id="status" class="status col-span-2" aria-live="polite"></p>
+        <button type="submit" class="btn-primary col-span-2">Enviar solicitud</button>
+        <p id="status" class="status" aria-live="polite"></p>
       </form>
     </section>
-    <footer><small>© RR — <a href="/">Volver al inicio</a> — Contacto: <a href="mailto:contacto@rr-raab.com">contacto@rr-raab.com</a></small></footer>
+    <footer><small>© RR — <a href="/index.html">Volver al inicio</a> — Contacto: <a href="mailto:contacto@rr-raab.com">contacto@rr-raab.com</a></small></footer>
   </main>
-
-  <script src="/transporte.js" type="module"></script>
-  <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}</script>
+  <script src="/app.js" defer></script>
 </body>
 </html>

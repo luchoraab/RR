@@ -1,7 +1,7 @@
 {
-  "name": "RR Servicios",
+  "name": "RR Servicios Integrales",
   "short_name": "RR",
-  "start_url": "/",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#144b9a",

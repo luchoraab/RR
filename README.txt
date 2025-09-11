@@ -1,20 +1,21 @@
-# RR Servicios Integrales — Deploy rápido
 
-1) Copiá `.env.example` a `.env` y completá:
-   - SMTP_USER: tu mail (si usás Gmail, debe ser el mail con contraseña de aplicación)
-   - SMTP_PASS: contraseña de aplicación
-   - (Opcional) SMTP_HOST/PORT/SECURE para otro proveedor (Brevo, Mailersend, etc.)
-   - TO_EMAIL: destino donde recibir las órdenes (por defecto contacto@rr-raab.com)
+RR Servicios Integrales — Deploy rápido
+=======================================
 
-2) Instalá dependencias:
+1) Copiá este proyecto completo a tu repo (incluye `public/`, `server.js`, `package.json`, `.env.example`).
+2) Hacé `cp .env.example .env` y completá SMTP_USER/PASS/TO_EMAIL.
+3) Instalar dependencias:
    npm install
-
-3) Levantá el server en local:
+4) Correr local:
    npm start
-   -> http://localhost:10000
+5) Deploy en Render:
+   - Build Command: npm install
+   - Start Command: npm start
+   - Root Directory: (vacío)
+   - Add Environment: variables del .env (no subas el .env).
 
-4) Render:
-   - Root: este repo
-   - Build command: npm install
-   - Start command: npm start
-   - Variables de entorno: todas las del .env
+Los formularios POST a:
+- /api/cadeteria
+- /api/transporte
+
+Adjuntan un .xlsx al correo de destino.
